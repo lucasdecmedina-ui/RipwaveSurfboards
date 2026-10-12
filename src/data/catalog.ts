@@ -46,7 +46,6 @@ export const boardCategories: BoardCategory[] = [
   { slug: "fish-retro", name: "Fish & Retro Series" },
   { slug: "fun", name: "Fun" },
   { slug: "longboards", name: "Longboards" },
-  { slug: "paddleboards", name: "Paddleboards", status: "development" },
   { slug: "stand-up", name: "Stand Up" },
 ];
 

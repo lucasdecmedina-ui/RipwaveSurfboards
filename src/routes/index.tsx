@@ -1,12 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/ripwave/Nav";
 import { Hero } from "@/components/ripwave/Hero";
-import { About } from "@/components/ripwave/About";
-import { Boards } from "@/components/ripwave/Boards";
-import { BoardVideo } from "@/components/ripwave/BoardVideo";
-import { Shaper } from "@/components/ripwave/Shaper";
-import { Reviews } from "@/components/ripwave/Reviews";
-import { Contact } from "@/components/ripwave/Contact";
+import { HomeTopics } from "@/components/ripwave/HomeTopics";
 import { SiteFooter } from "@/components/ripwave/SiteFooter";
 
 const title = "Ripwave Surfboards — Pranchas artesanais desde 1978";
@@ -33,12 +28,7 @@ function Index() {
       <Nav />
       <main>
         <Hero />
-        <About />
-        <Boards />
-        <BoardVideo />
-        <Shaper />
-        <Reviews />
-        <Contact />
+        <HomeTopics />
       </main>
       <SiteFooter />
     </div>

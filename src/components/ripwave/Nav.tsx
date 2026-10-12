@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { boardCategories } from "@/data/catalog";
+import { WhatsAppIcon } from "./WhatsAppIcon";
 
 const links = [
-  { href: "/#sobre", label: "Sobre" },
-  { href: "/#encomendas", label: "Encomendas" },
-  { href: "/#contato", label: "Contato" },
+  { to: "/encomendas", label: "Encomendas" },
+  { to: "/sobre", label: "Sobre" },
+  { to: "/contato", label: "Contato" },
 ];
 
 export function Nav() {
@@ -39,6 +40,15 @@ export function Nav() {
           />
         </Link>
         <nav className="hidden items-center gap-8 md:flex">
+          {links.slice(0, 1).map((l) => (
+            <Link
+              key={l.to}
+              to={l.to}
+              className="text-xs font-semibold tracking-[0.2em] text-sand/80 uppercase transition-colors hover:text-primary"
+            >
+              {l.label}
+            </Link>
+          ))}
           <div
             className="relative after:absolute after:top-full after:left-0 after:h-4 after:w-full"
             onMouseEnter={() => setCatalogOpen(true)}
@@ -85,20 +95,20 @@ export function Nav() {
               </div>
             ) : null}
           </div>
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
+          {links.slice(1).map((l) => (
+            <Link
+              key={l.to}
+              to={l.to}
               className="text-xs font-semibold tracking-[0.2em] text-sand/80 uppercase transition-colors hover:text-primary"
             >
               {l.label}
-            </a>
+            </Link>
           ))}
           <Link
             to="/cuidados"
             className="text-xs font-semibold tracking-[0.2em] text-sand/50 uppercase transition-colors hover:text-primary"
           >
-            Cuidados
+            Conservação
           </Link>
         </nav>
 
@@ -107,8 +117,9 @@ export function Nav() {
             href="https://wa.me/5513991672772"
             target="_blank"
             rel="noreferrer"
-            className="bg-primary px-5 py-2.5 text-[0.65rem] font-semibold tracking-[0.2em] text-primary-foreground uppercase transition-transform duration-300 hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 bg-[#25D366] px-5 py-2.5 text-[0.65rem] font-semibold tracking-[0.2em] text-[#073b1e] uppercase transition-transform duration-300 hover:-translate-y-0.5 hover:bg-[#20bd5a]"
           >
+            <WhatsAppIcon className="h-4 w-4" />
             WhatsApp
           </a>
           <button
@@ -129,6 +140,16 @@ export function Nav() {
       {mobileOpen ? (
         <nav className="border-t border-sand/15 bg-navy/98 px-6 py-6 backdrop-blur-md md:hidden">
           <div className="mx-auto max-w-6xl space-y-2">
+            {links.slice(0, 1).map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                onClick={() => setMobileOpen(false)}
+                className="block py-3 text-sm font-semibold tracking-[0.2em] text-sand/80 uppercase transition-colors hover:text-primary"
+              >
+                {link.label}
+              </Link>
+            ))}
             <button
               type="button"
               onClick={() => setMobileCatalogOpen((open) => !open)}
@@ -163,22 +184,22 @@ export function Nav() {
                 ))}
               </div>
             ) : null}
-            {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
+            {links.slice(1).map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
                 onClick={() => setMobileOpen(false)}
                 className="block py-3 text-sm font-semibold tracking-[0.2em] text-sand/80 uppercase transition-colors hover:text-primary"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <Link
               to="/cuidados"
               onClick={() => setMobileOpen(false)}
               className="block py-3 text-sm font-semibold tracking-[0.2em] text-sand/50 uppercase transition-colors hover:text-primary"
             >
-              Cuidados
+              Conservação
             </Link>
           </div>
         </nav>

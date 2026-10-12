@@ -1,13 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Clock3, MessageCircle, ShieldCheck, Smartphone, Sun, Waves } from "lucide-react";
+import { Car, Clock3, MessageCircle, ShieldCheck, Smartphone, Sun, Waves } from "lucide-react";
 import { Reveal } from "@/components/ripwave/Reveal";
 import { WaveDivider, TribalLine } from "@/components/ripwave/WaveDivider";
 import { SiteFooter } from "@/components/ripwave/SiteFooter";
 
 const WHATSAPP = "https://wa.me/5513991672772";
-const MAPS = "https://maps.app.goo.gl/R828mBji1RczmnjE6";
+const MAPS = "https://maps.app.goo.gl/cSth9MhdkcUW19WM7";
 
-const title = "Cuidados com sua nova prancha Ripwave — Guia do Surfista";
+const title = "Conservação da sua prancha Ripwave — Guia do Surfista";
 const description =
   "Guia oficial Ripwave Surfboards: pequenos cuidados diários que fazem sua prancha durar muitas ondas.";
 
@@ -27,31 +27,37 @@ export const Route = createFileRoute("/cuidados")({
 
 const careSections = [
   {
-    n: "01",
+    group: "Primeiros dias",
     title: "Ainda está curando",
     icon: Clock3,
-    desc: "Sua prancha acabou de sair da fábrica e está em um processo natural de cura. O tempo necessário varia de acordo com o material e o acabamento; se tiver dúvida sobre o melhor momento para usar, fale com a Ripwave.",
+    desc: "Toda prancha recém-saída da fábrica ainda está passando pelo processo de cura da resina. Esse tempo varia conforme o material e o clima em que foi laminada. Nos primeiros dias, evite calor forte e exposição prolongada ao sol. A prancha pode ir à água, mas merece cuidado redobrado por até 1 mês, até completar a cura total.",
   },
   {
-    n: "02",
+    group: "Primeiros dias",
     title: "Posso já pôr na água?",
     icon: Waves,
-    desc: "Antes da primeira sessão, confirme com a gente se a sua prancha já está pronta para entrar no mar. Assim você aproveita o primeiro surf com tranquilidade.",
+    desc: "A cura não impede o surf. Durante os primeiros dias, prefira condições mais tranquilas e evite impacto ou ondas muito fortes. Fora da água, não deixe a prancha exposta ao sol ou dentro de um carro quente.",
   },
   {
-    n: "03",
+    group: "Pra sempre",
     title: "Sol, calor e cor",
     icon: Sun,
-    desc: "Sol e calor em excesso não fazem bem para nenhuma prancha. Evite deixá-la dentro do carro ou exposta por muito tempo; use capa e procure guardar em local fresco e arejado.",
+    desc: "Nossa resina tem proteção UV, mas isso não deixa a prancha imune. Sol direto e calor forte ainda podem causar mudança de cor ao longo do tempo. Guarde na sombra sempre que puder.",
   },
   {
-    n: "04",
-    title: "O básico de sempre",
+    group: "Pra sempre",
+    title: "Depois do surf",
     icon: ShieldCheck,
-    desc: "Confira a prancha antes e depois do surf. Se aparecer alguma trinca, amassado ou batida, evite entrar na água até avaliar o reparo. Transporte com proteção e não deixe a prancha encostada onde possa cair ou marcar.",
+    desc: "Lave com água doce depois de cada surf e seque antes de guardar. Sal e areia acumulados desgastam resina, quilha e parafuso com o tempo.",
   },
   {
-    n: "05",
+    group: "Pra sempre",
+    title: "Transporte",
+    icon: Car,
+    desc: "Use uma capa adequada sempre que puder e prenda a prancha com cuidado. No carro, evite calor excessivo e impactos durante o caminho.",
+  },
+  {
+    group: "Pra sempre",
     title: "Qualquer dúvida",
     icon: MessageCircle,
     desc: "Cada prancha tem uma história e um acabamento próprio. Sempre que precisar, chama a Ripwave no WhatsApp ou passe na loja para conversar com a gente.",
@@ -90,7 +96,7 @@ function CarePage() {
         {/* HERO */}
         <section className="relative isolate flex min-h-[78svh] w-full items-center justify-center overflow-hidden bg-navy">
           <img
-            src="/media/care-hero.jpg"
+            src="/media/client/conservacao.jpg"
             alt="Prancha Ripwave na beira do mar ao pôr do sol"
             width={1920}
             height={1088}
@@ -146,12 +152,12 @@ function CarePage() {
               {careSections.map((c, i) => {
                 const Icon = c.icon;
                 return (
-                  <Reveal key={c.n} delay={i * 90}>
+                  <Reveal key={c.title} delay={i * 90}>
                     <article className="card-lift flex h-full flex-col border-l-2 border-primary bg-sand/5 p-6 ring-1 ring-sand/10">
                       <div className="flex flex-1 flex-col">
                         <div className="flex items-center gap-3">
-                          <span className="font-display text-3xl text-primary">{c.n}</span>
-                          <Icon className="h-5 w-5 text-sand/70" aria-hidden />
+                          <Icon className="h-8 w-8 text-primary" aria-hidden />
+                          <span className="eyebrow text-sand/50">{c.group}</span>
                         </div>
                         <h3 className="mt-3 text-xl text-sand">{c.title}</h3>
                         <p className="mt-3 flex-1 text-sm leading-relaxed text-sand/70">{c.desc}</p>

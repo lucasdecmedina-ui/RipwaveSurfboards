@@ -20,7 +20,7 @@ export function Boards() {
             <span className="eyebrow">Modelos em destaque</span>
           </div>
           <h2 className="mt-5 max-w-2xl text-4xl leading-[1] text-sand md:text-5xl">
-            Cada prancha nasce de uma onda em mente
+            Uma prancha para cada surf.
           </h2>
         </Reveal>
 
@@ -32,16 +32,26 @@ export function Boards() {
                 params={{ categoria: board.categorySlug, modelo: board.slug }}
                 className="card-lift group flex h-full flex-col overflow-hidden bg-sand/5 ring-1 ring-sand/10 backdrop-blur-sm"
               >
-                <div
-                  className="model-graphic relative h-56 overflow-hidden"
-                  style={{ "--model-index": index } as CSSProperties}
-                  aria-hidden
-                >
-                  <span className="absolute top-5 left-5 font-display text-5xl text-sand/20">
-                    0{index + 1}
-                  </span>
-                  <span className="absolute right-7 bottom-6 h-32 w-10 rotate-[28deg] rounded-full border-2 border-primary/80 bg-sand/10" />
-                </div>
+                {board.images?.[0] ? (
+                  <div className="h-56 bg-[#edf1f2] p-3">
+                    <img
+                      src={board.images[0].src}
+                      alt={board.images[0].alt}
+                      className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className="model-graphic relative h-56 overflow-hidden"
+                    style={{ "--model-index": index } as CSSProperties}
+                    aria-hidden
+                  >
+                    <span className="absolute top-5 left-5 font-display text-5xl text-sand/20">
+                      0{index + 1}
+                    </span>
+                    <span className="absolute right-7 bottom-6 h-32 w-10 rotate-[28deg] rounded-full border-2 border-primary/80 bg-sand/10" />
+                  </div>
+                )}
                 <div className="flex flex-1 flex-col p-5">
                   <h3 className="text-xl leading-[0.95] text-sand">{board.name}</h3>
                   <p className="mt-3 line-clamp-4 flex-1 text-sm leading-relaxed text-sand/70">

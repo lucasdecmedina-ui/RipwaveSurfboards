@@ -10,7 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as CuidadosRouteImport } from './routes/cuidados'
+import { Route as EncomendasRouteImport } from './routes/encomendas'
+import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as PranchasIndexRouteImport } from './routes/pranchas/index'
 import { Route as PranchasCategoriaRouteImport } from './routes/pranchas/$categoria'
 import { Route as PranchasCategoriaIndexRouteImport } from './routes/pranchas/$categoria/index'
@@ -21,9 +24,24 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContatoRoute = ContatoRouteImport.update({
+  id: '/contato',
+  path: '/contato',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CuidadosRoute = CuidadosRouteImport.update({
   id: '/cuidados',
   path: '/cuidados',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EncomendasRoute = EncomendasRouteImport.update({
+  id: '/encomendas',
+  path: '/encomendas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SobreRoute = SobreRouteImport.update({
+  id: '/sobre',
+  path: '/sobre',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PranchasIndexRoute = PranchasIndexRouteImport.update({
@@ -49,7 +67,10 @@ const PranchasCategoriaModeloRoute = PranchasCategoriaModeloRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contato': typeof ContatoRoute
   '/cuidados': typeof CuidadosRoute
+  '/encomendas': typeof EncomendasRoute
+  '/sobre': typeof SobreRoute
   '/pranchas/$categoria': typeof PranchasCategoriaRouteWithChildren
   '/pranchas/': typeof PranchasIndexRoute
   '/pranchas/$categoria/$modelo': typeof PranchasCategoriaModeloRoute
@@ -57,7 +78,10 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contato': typeof ContatoRoute
   '/cuidados': typeof CuidadosRoute
+  '/encomendas': typeof EncomendasRoute
+  '/sobre': typeof SobreRoute
   '/pranchas': typeof PranchasIndexRoute
   '/pranchas/$categoria/$modelo': typeof PranchasCategoriaModeloRoute
   '/pranchas/$categoria': typeof PranchasCategoriaIndexRoute
@@ -65,7 +89,10 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contato': typeof ContatoRoute
   '/cuidados': typeof CuidadosRoute
+  '/encomendas': typeof EncomendasRoute
+  '/sobre': typeof SobreRoute
   '/pranchas/$categoria': typeof PranchasCategoriaRouteWithChildren
   '/pranchas/': typeof PranchasIndexRoute
   '/pranchas/$categoria/$modelo': typeof PranchasCategoriaModeloRoute
@@ -75,7 +102,10 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/contato'
     | '/cuidados'
+    | '/encomendas'
+    | '/sobre'
     | '/pranchas/$categoria'
     | '/pranchas/'
     | '/pranchas/$categoria/$modelo'
@@ -83,14 +113,20 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/contato'
     | '/cuidados'
+    | '/encomendas'
+    | '/sobre'
     | '/pranchas'
     | '/pranchas/$categoria/$modelo'
     | '/pranchas/$categoria'
   id:
     | '__root__'
     | '/'
+    | '/contato'
     | '/cuidados'
+    | '/encomendas'
+    | '/sobre'
     | '/pranchas/$categoria'
     | '/pranchas/'
     | '/pranchas/$categoria/$modelo'
@@ -99,7 +135,10 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContatoRoute: typeof ContatoRoute
   CuidadosRoute: typeof CuidadosRoute
+  EncomendasRoute: typeof EncomendasRoute
+  SobreRoute: typeof SobreRoute
   PranchasCategoriaRoute: typeof PranchasCategoriaRouteWithChildren
   PranchasIndexRoute: typeof PranchasIndexRoute
 }
@@ -113,11 +152,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contato': {
+      id: '/contato'
+      path: '/contato'
+      fullPath: '/contato'
+      preLoaderRoute: typeof ContatoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cuidados': {
       id: '/cuidados'
       path: '/cuidados'
       fullPath: '/cuidados'
       preLoaderRoute: typeof CuidadosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/encomendas': {
+      id: '/encomendas'
+      path: '/encomendas'
+      fullPath: '/encomendas'
+      preLoaderRoute: typeof EncomendasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sobre': {
+      id: '/sobre'
+      path: '/sobre'
+      fullPath: '/sobre'
+      preLoaderRoute: typeof SobreRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pranchas/': {
@@ -166,7 +226,10 @@ const PranchasCategoriaRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContatoRoute: ContatoRoute,
   CuidadosRoute: CuidadosRoute,
+  EncomendasRoute: EncomendasRoute,
+  SobreRoute: SobreRoute,
   PranchasCategoriaRoute: PranchasCategoriaRouteWithChildren,
   PranchasIndexRoute: PranchasIndexRoute,
 }

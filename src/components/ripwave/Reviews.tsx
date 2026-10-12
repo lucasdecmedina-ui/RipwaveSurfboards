@@ -2,7 +2,7 @@ import { ExternalLink, Star } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { TribalLine } from "./WaveDivider";
 
-const GOOGLE_MAPS = "https://maps.app.goo.gl/R828mBji1RczmnjE6";
+const GOOGLE_MAPS = "https://maps.app.goo.gl/cSth9MhdkcUW19WM7";
 
 export function Reviews() {
   return (

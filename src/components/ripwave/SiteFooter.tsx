@@ -19,6 +19,18 @@ export function SiteFooter() {
         <TribalLine className="mx-auto mt-6 text-sand/50" />
 
         <nav className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-sand/70">
+          <Link to="/encomendas" className="transition-colors hover:text-primary">
+            Encomendas
+          </Link>
+          <Link to="/pranchas" className="transition-colors hover:text-primary">
+            Pranchas
+          </Link>
+          <Link to="/sobre" className="transition-colors hover:text-primary">
+            Sobre
+          </Link>
+          <Link to="/contato" className="transition-colors hover:text-primary">
+            Contato
+          </Link>
           <a
             href="https://instagram.com/ripwavesurfboards"
             target="_blank"
@@ -42,7 +54,7 @@ export function SiteFooter() {
             ripwavecomercial@gmail.com
           </a>
           <a
-            href="https://maps.app.goo.gl/R828mBji1RczmnjE6"
+            href="https://maps.app.goo.gl/cSth9MhdkcUW19WM7"
             target="_blank"
             rel="noreferrer"
             className="transition-colors hover:text-primary"
@@ -50,7 +62,7 @@ export function SiteFooter() {
             Localização
           </a>
           <Link to="/cuidados" className="transition-colors hover:text-primary">
-            Cuidados com sua prancha
+            Conservação da prancha
           </Link>
         </nav>
 

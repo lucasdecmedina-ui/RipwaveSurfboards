@@ -5,12 +5,11 @@ import { WaveDivider } from "@/components/ripwave/WaveDivider";
 import { boardCategories } from "@/data/catalog";
 
 const categoryImages: Record<string, string> = {
-  shortboards: "/media/catalog/categories/shortboards.jpg",
-  "fish-retro": "/media/catalog/categories/fish-retro.jpg",
-  fun: "/media/catalog/categories/fun.jpg",
-  longboards: "/media/catalog/categories/longboards.jpg",
-  paddleboards: "/media/catalog/categories/paddleboards.jpg",
-  "stand-up": "/media/catalog/categories/stand-up.jpg",
+  shortboards: "/media/client/categoria-shortboards.jpg",
+  "fish-retro": "/media/client/categoria-fish-retro.jpg",
+  fun: "/media/client/categoria-fun.jpg",
+  longboards: "/media/client/categoria-longboards.jpg",
+  "stand-up": "/media/client/categoria-stand-up.jpg",
 };
 
 export const Route = createFileRoute("/pranchas/")({
@@ -33,10 +32,9 @@ function CatalogIndexPage() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid max-w-5xl gap-8 border-l-2 border-primary pl-6 md:grid-cols-2">
             <div>
-              <p className="text-lg leading-relaxed text-foreground/80 md:text-xl">
+              <p className="text-2xl leading-[1.05] text-foreground md:text-4xl">
                 Cada modelo deste catálogo é uma referência: décadas de shape testado onda a onda,
-                aprimorado a partir do que realmente importa — pessoas diferentes, mares diferentes,
-                momentos diferentes do surf.
+                os formatos que funcionam de verdade e diferenciam a Ripwave.
               </p>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground">
                 Aqui você encontra pranchas que fizeram e fazem parte da história da Ripwave.
@@ -51,14 +49,13 @@ function CatalogIndexPage() {
                 e o tipo de onda que você mais surfa fazem toda a diferença na escolha final.
               </p>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                Do shortboard ao SUP, fabricamos em EPS ou PU. Use as referências para começar a
-                conversa e encontre, com o Beto, a medida certa para o seu surf.
+                Se inspire nos modelos abaixo, ou venha já entender como funciona encomendar a sua.
               </p>
               <a
                 href="/#encomendas"
                 className="mt-6 inline-flex border-b-2 border-primary pb-1 text-xs font-semibold tracking-[0.18em] uppercase transition-colors hover:text-primary"
               >
-                Encomende a sua →
+                Como encomendar →
               </a>
             </div>
           </div>
@@ -72,8 +69,14 @@ function CatalogIndexPage() {
               >
                 <img
                   src={categoryImages[category.slug]}
+                  alt=""
+                  aria-hidden
+                  className="absolute inset-0 h-full w-full scale-110 object-cover opacity-40 blur-md"
+                />
+                <img
+                  src={categoryImages[category.slug]}
                   alt={`Prancha ${category.name} em estúdio`}
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="absolute inset-0 h-full w-full scale-[1.22] object-contain transition-transform duration-700 group-hover:scale-[1.28]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/45 to-navy/5" />
                 <span className="relative z-10 font-display text-6xl leading-none text-sand/40">
@@ -96,11 +99,18 @@ function CatalogIndexPage() {
       </section>
       <section className="bg-navy px-6 py-16 text-sand md:py-20">
         <div className="mx-auto max-w-6xl border-l-2 border-primary pl-6">
-          <p className="eyebrow text-sand/55">Modelos que guiam a conversa</p>
+          <p className="eyebrow text-primary">Não sabe qual escolher?</p>
           <p className="mt-3 max-w-2xl text-lg leading-relaxed text-sand/80">
-            Explore os modelos, compare as medidas e leve essas referências para uma conversa com a
-            Ripwave. Cada encomenda é ajustada ao surfista e ao mar onde ela vai viver.
+            Converse com a gente para entender qual modelo faz sentido para o seu surf.
           </p>
+          <a
+            href="https://wa.me/5513991672772?text=Olá%2C%20gostaria%20de%20conversar%20sobre%20uma%20prancha."
+            target="_blank"
+            rel="noreferrer"
+            className="mt-6 inline-flex border-b-2 border-primary pb-1 text-xs font-semibold tracking-[0.18em] text-sand uppercase hover:text-primary"
+          >
+            Conversar sobre uma prancha →
+          </a>
         </div>
       </section>
     </CatalogFrame>

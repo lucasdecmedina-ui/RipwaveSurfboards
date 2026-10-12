@@ -3,10 +3,26 @@ import { Link } from "@tanstack/react-router";
 import { TribalLine } from "./WaveDivider";
 
 const slides = [
-  { src: "/media/hero-surf-1.jpg", alt: "Surfista manobrando em uma onda" },
-  { src: "/media/hero-surf-2.jpg", alt: "Surfista em uma onda com prancha Ripwave" },
-  { src: "/media/hero-surf-3.jpg", alt: "Surfista pegando uma onda" },
-  { src: "/media/interior_pranchas_2.png", alt: "Pranchas Ripwave finalizadas na fábrica" },
+  {
+    src: "/media/client/hero-1.jpg",
+    alt: "Surfista manobrando em uma onda",
+    text: "Ripwave. Evoluindo a cada onda.",
+  },
+  {
+    src: "/media/client/hero-2.jpg",
+    alt: "Surfista em uma onda com prancha Ripwave",
+    text: "Cada onda é diferente. Sua prancha também deveria ser.",
+  },
+  {
+    src: "/media/client/hero-3.jpg",
+    alt: "Surfista pegando uma onda",
+    text: "Mais de 37 mil pranchas, uma a uma, pelas mãos do Beto.",
+  },
+  {
+    src: "/media/client/hero-4.jpg",
+    alt: "Pranchas Ripwave finalizadas na fábrica",
+    text: "Na sua primeira ou enésima prancha, a escuta é a mesma.",
+  },
 ];
 
 export function Hero() {
@@ -55,9 +71,9 @@ export function Hero() {
           className="mx-auto mb-8 h-28 w-auto animate-fade-in object-contain drop-shadow-lg md:h-36"
         />
         <h1 className="sr-only">Ripwave Surfboards</h1>
-        <p className="script mt-5 text-2xl text-sand/90 md:text-4xl">Evoluindo a cada onda.</p>
+        <p className="script mt-5 text-2xl text-sand/90 md:text-4xl">{slides[activeSlide].text}</p>
         <p className="mx-auto mt-5 max-w-lg text-sm leading-relaxed text-sand/80 md:text-base">
-          Pranchas sob medida, moldadas em Santos desde 1978.
+          Pranchas sob medida, moldadas em Santos.
         </p>
 
         <div className="mt-8 flex items-center justify-center gap-4 text-sand/80">
@@ -67,10 +83,10 @@ export function Hero() {
         </div>
 
         <Link
-          to="/pranchas"
+          to="/encomendas"
           className="mt-10 inline-flex items-center justify-center bg-primary px-9 py-4 text-sm font-semibold tracking-[0.2em] text-primary-foreground uppercase transition-transform duration-300 hover:-translate-y-1 hover:bg-primary/90"
         >
-          Conheça a Ripwave
+          Encomende sua prancha
         </Link>
       </div>
 

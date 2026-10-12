@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, MapPin, MessageCircle, PackageCheck, Sparkles, Wrench } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { TribalLine } from "./WaveDivider";
 
-const WHATSAPP = "https://wa.me/5513991672772";
+const WHATSAPP = "https://wa.me/5513991672772?text=Olá%2C%20gostaria%20de%20falar%20com%20o%20Beto";
+const MAPS = "https://maps.app.goo.gl/cSth9MhdkcUW19WM7";
 
 const steps = [
   {
@@ -19,7 +20,7 @@ const steps = [
   {
     n: "03",
     t: "Produção",
-    d: "A prancha é feita sob medida, da escolha do bloco e das medidas ao acabamento final.",
+    d: "A prancha é feita sob medida. Prazos são combinados e acompanhados até a prancha ficar pronta.",
   },
   {
     n: "04",
@@ -31,7 +32,7 @@ const steps = [
 const faq = [
   {
     q: "Quanto tempo leva para minha prancha ficar pronta?",
-    a: "O prazo de produção é combinado na conversa, porque cada encomenda tem detalhes próprios de shape, material e acabamento.",
+    a: "Em média 3 semanas, mas isso varia de acordo com o modelo e a fila de encomendas do momento. O prazo fica combinado com você logo no primeiro papo.",
   },
   {
     q: "EPS ou PU: qual eu escolho?",
@@ -43,7 +44,7 @@ const faq = [
   },
   {
     q: "Posso vender uma prancha usada sem encomendar uma nova?",
-    a: "Sim. Você pode trazer sua prancha para avaliação e deixá-la disponível para venda na loja, mesmo sem fazer uma nova encomenda.",
+    a: "A gente também avalia. Dependendo do caso, anunciamos para os nossos clientes ou indicamos bons canais para você vender por conta própria.",
   },
   {
     q: "Fazem reparo de qualquer prancha?",
@@ -54,7 +55,7 @@ const faq = [
     a: "A prancha é avaliada para entender o dano e definir o reparo. Depois, combinamos o serviço e avisamos quando ela estiver pronta para voltar à água.",
   },
   {
-    q: "Vendemos acessórios sem encomendar uma prancha?",
+    q: "Vendem acessórios mesmo sem eu estar encomendando prancha?",
     a: "Sim. Leash, deck, quilhas, capas e parafina ficam disponíveis na loja para quem precisar, com ou sem encomenda.",
   },
 ];
@@ -72,7 +73,7 @@ export function Shaper() {
               <span className="eyebrow">Encomendas</span>
             </div>
             <h2 className="mt-5 text-4xl leading-[1] text-sand md:text-5xl">
-              Sua prancha começa com você.
+              Sua prancha começa aqui.
             </h2>
             <p className="mt-6 max-w-lg text-base leading-relaxed text-sand/70 md:text-lg">
               Quando você encomenda uma prancha na Ripwave, a conversa vem antes do shape. A gente
@@ -89,13 +90,14 @@ export function Shaper() {
               rel="noreferrer"
               className="mt-8 inline-flex bg-primary px-7 py-3 text-xs font-semibold tracking-[0.18em] text-primary-foreground uppercase transition-transform duration-300 hover:-translate-y-1"
             >
+              <MessageCircle className="h-4 w-4" aria-hidden />
               Converse com o Beto
             </a>
           </Reveal>
           <Reveal delay={120}>
             <img
-              src="/media/beto-production.jpg"
-              alt="Beto Loureiro trabalhando no acabamento de uma prancha"
+              src="/media/client/encomendas-conversa.jpg"
+              alt="Atendimento personalizado na Ripwave"
               loading="lazy"
               width={1920}
               height={3413}
@@ -107,8 +109,8 @@ export function Shaper() {
         <div className="mt-16 grid gap-10 lg:grid-cols-[1fr_1.15fr]">
           <Reveal className="order-2 lg:order-1">
             <img
-              src="/media/custom-board.jpg"
-              alt="Prancha personalizada Ripwave"
+              src="/media/client/encomendas-pintura.jpg"
+              alt="Prancha Ripwave em processo de pintura"
               loading="lazy"
               width={1920}
               height={2560}
@@ -128,27 +130,61 @@ export function Shaper() {
           </div>
         </div>
 
-        <Reveal className="mt-12 border-l-2 border-primary bg-sand/5 p-7" delay={100}>
-          <p className="max-w-4xl text-base leading-relaxed text-sand/75">
-            Além das encomendas, a Ripwave também recebe reparos de qualquer marca, tem alguns
-            modelos pronta-entrega e acessórios para completar seu surf. Se você tem uma prancha
-            usada, pode trazer para avaliação e deixar disponível para venda na loja.
-          </p>
-        </Reveal>
+        <section className="mt-16 border-t border-sand/20 pt-12">
+          <Reveal>
+            <p className="eyebrow text-primary">Outros serviços</p>
+            <p className="mt-4 max-w-3xl text-base leading-relaxed text-sand/75">
+              Além das encomendas, a Ripwave também realiza reparos de qualquer marca, tem alguns
+              modelos pronta-entrega na loja física e acessórios para completar seu surf.
+            </p>
+          </Reveal>
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            {[
+              { icon: Wrench, title: "Reparos", text: "Reparos em pranchas de qualquer marca." },
+              {
+                icon: PackageCheck,
+                title: "Pronta-entrega",
+                text: "Estoque variado disponível na loja.",
+              },
+              {
+                icon: Sparkles,
+                title: "Acessórios",
+                text: "Leash, deck, quilhas, capas e parafina.",
+              },
+            ].map(({ icon: Icon, title, text }) => (
+              <Reveal key={title}>
+                <article className="card-lift border-l-2 border-primary bg-sand/5 p-6">
+                  <Icon className="h-7 w-7 text-primary" aria-hidden />
+                  <h3 className="mt-5 text-xl text-sand">{title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-sand/70">{text}</p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal className="mt-8 flex flex-wrap gap-5">
+            <a
+              href={MAPS}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 border-b-2 border-primary pb-1 text-xs font-semibold tracking-[0.18em] text-sand uppercase hover:text-primary"
+            >
+              <MapPin className="h-4 w-4" aria-hidden /> Conheça a loja →
+            </a>
+            <a
+              href={WHATSAPP}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 border-b-2 border-primary pb-1 text-xs font-semibold tracking-[0.18em] text-sand uppercase hover:text-primary"
+            >
+              Fale com a gente →
+            </a>
+          </Reveal>
+        </section>
 
         <Reveal className="mt-20" delay={150}>
-          <div className="grid gap-8 border-t border-sand/20 pt-12 lg:grid-cols-[0.7fr_1fr]">
-            <div>
-              <p className="eyebrow text-primary">Perguntas frequentes</p>
-              <h3 className="mt-4 text-3xl leading-none text-sand">
-                Tudo começa numa boa conversa.
-              </h3>
-              <p className="mt-5 text-sm leading-relaxed text-sand/65">
-                Escolha EPS ou PU com a orientação do Beto, traga sua prancha para reparo ou venda e
-                encontre acessórios na loja — tudo começa em uma conversa.
-              </p>
-            </div>
-            <div className="divide-y divide-sand/15 border-t border-sand/15">
+          <div className="border-t border-sand/20 pt-12">
+            <p className="eyebrow text-primary">Perguntas frequentes</p>
+            <div className="mt-6 divide-y divide-sand/15 border-t border-sand/15">
               {faq.map((item, index) => {
                 const isOpen = openFaq === index;
                 return (

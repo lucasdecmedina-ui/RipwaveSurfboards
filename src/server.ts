@@ -1,5 +1,4 @@
 import "./lib/error-capture";
-import startServerEntry from "@tanstack/react-start/server-entry";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
@@ -8,8 +7,15 @@ type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
 };
 
+let serverEntryPromise: Promise<ServerEntry> | undefined;
+
 async function getServerEntry(): Promise<ServerEntry> {
-  return startServerEntry as ServerEntry;
+  if (!serverEntryPromise) {
+    serverEntryPromise = import("@tanstack/react-start/server-entry").then(
+      (m) => (m.default ?? m) as ServerEntry,
+    );
+  }
+  return serverEntryPromise;
 }
 
 // h3 swallows in-handler throws into a normal 500 Response with body

@@ -1,8 +1,9 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
+import { MessageCircle } from "lucide-react";
 import type { CSSProperties } from "react";
 import { BoardViewer } from "@/components/ripwave/BoardViewer";
 import { CatalogFrame } from "@/components/ripwave/CatalogFrame";
-import { boardEditorial, getBoardCategory, getBoardModel } from "@/data/catalog";
+import { getBoardCategory, getBoardModel } from "@/data/catalog";
 
 export const Route = createFileRoute("/pranchas/$categoria/$modelo")({
   beforeLoad: ({ params }) => {
@@ -17,7 +18,6 @@ function ModelPage() {
   const model = getBoardModel(categoria, modelo);
 
   if (!category || !model) return null;
-  const editorial = boardEditorial[model.slug];
 
   return (
     <CatalogFrame
@@ -47,15 +47,8 @@ function ModelPage() {
             )}
           </div>
           <div>
-            {editorial ? (
-              <div className="space-y-4 text-lg leading-relaxed text-foreground/75">
-                {editorial.paragraphs.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-              </div>
-            ) : (
-              <p className="text-lg leading-relaxed text-foreground/75">{model.description}</p>
-            )}
+            <p className="eyebrow text-foreground/55">O que o Beto diz</p>
+            <p className="mt-4 text-lg leading-relaxed text-foreground/75">{model.description}</p>
             <dl className="mt-8 grid gap-4 border-l-2 border-primary pl-5 text-foreground/75 sm:grid-cols-3">
               <div>
                 <dt className="eyebrow text-foreground/50">Rabeta</dt>
@@ -72,14 +65,16 @@ function ModelPage() {
             </dl>
           </div>
         </div>
-        {editorial ? (
-          <div className="mx-auto mt-12 max-w-6xl border-l-2 border-primary bg-muted/70 p-6 md:p-8">
-            <p className="eyebrow text-foreground/55">Detalhes do shape</p>
-            <p className="mt-3 max-w-4xl leading-relaxed text-foreground/75">{model.description}</p>
-          </div>
-        ) : null}
         <div className="mx-auto mt-16 max-w-6xl">
-          <p className="eyebrow text-foreground/55">Medidas disponíveis</p>
+          <a
+            href={`https://wa.me/5513991672772?text=${encodeURIComponent(`Olá, quero pedir uma ${model.name}.`)}`}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 bg-primary px-7 py-3 text-xs font-semibold tracking-[0.18em] text-primary-foreground uppercase transition-transform hover:-translate-y-1"
+          >
+            <MessageCircle className="h-4 w-4" aria-hidden /> Peça a sua
+          </a>
+          <p className="mt-10 eyebrow text-foreground/55">Medidas disponíveis</p>
           <div className="mt-5 overflow-x-auto border border-navy/15">
             <table className="w-full min-w-[600px] text-left">
               <thead className="bg-navy text-sand">
