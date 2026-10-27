@@ -30,7 +30,7 @@ function CatalogIndexPage() {
     <CatalogFrame eyebrow="Ripwave Surfboards" title="Catálogo de pranchas">
       <section className="relative overflow-hidden py-20 md:py-28">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="grid max-w-5xl gap-8 border-l-2 border-primary pl-6 md:grid-cols-2">
+          <div className="max-w-5xl border-l-2 border-primary pl-6">
             <div>
               <p className="text-2xl leading-[1.05] text-foreground md:text-4xl">
                 Cada modelo deste catálogo é uma referência: décadas de shape testado onda a onda,
@@ -42,13 +42,8 @@ function CatalogIndexPage() {
                 servindo de base para quem busca uma prancha que realmente funcione na água.
               </p>
             </div>
-            <div className="border-t border-border pt-6 md:border-t-0 md:border-l md:pt-0 md:pl-8">
-              <p className="eyebrow text-primary">Encontre seu ponto de partida</p>
-              <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-                As medidas servem como ponto de partida, não como regra. Peso, altura, nível de surf
-                e o tipo de onda que você mais surfa fazem toda a diferença na escolha final.
-              </p>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+            <div className="pt-2">
+              <p className="text-base leading-relaxed text-primary">
                 Se inspire nos modelos abaixo, ou venha já entender como funciona encomendar a sua.
               </p>
               <a
@@ -104,7 +99,7 @@ function CatalogIndexPage() {
             Converse com a gente para entender qual modelo faz sentido para o seu surf.
           </p>
           <a
-            href="https://wa.me/5513991672772?text=Olá%2C%20gostaria%20de%20conversar%20sobre%20uma%20prancha."
+            href="https://wa.me/5513991672772?text=Ol%C3%A1%2C%20estava%20no%20site%20e%20gostaria%20de%20ter%20mais%20informa%C3%A7%C3%B5es."
             target="_blank"
             rel="noreferrer"
             className="mt-6 inline-flex border-b-2 border-primary pb-1 text-xs font-semibold tracking-[0.18em] text-sand uppercase hover:text-primary"

@@ -1,8 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, MapPin, MessageCircle, ShieldCheck, Waves } from "lucide-react";
+import { ArrowUpRight, MapPin, ShieldCheck, Waves } from "lucide-react";
 import { boardCategories } from "@/data/catalog";
 import { Reveal } from "./Reveal";
 import { TribalLine, WaveDivider } from "./WaveDivider";
+import { WhatsAppIcon } from "./WhatsAppIcon";
 
 const steps = ["Conversa", "Proposta", "Produção", "Na água"];
 
@@ -44,15 +45,28 @@ export function HomeTopics() {
               <span className="eyebrow">Encomendas</span>
             </div>
             <h2 className="mt-5 max-w-xl text-5xl leading-[.9] text-sand md:text-6xl">
-              Sua prancha começa em uma conversa.
+              A sua próxima prancha começa com uma conversa.
             </h2>
             <p className="mt-6 max-w-lg text-base leading-relaxed text-sand/75 md:text-lg">
-              Antes do shape, vem o seu surf: onde você entra no mar, o que procura sentir e para
-              onde quer evoluir.
+              Seu nível, seu jeito de surfar e o tipo de onda que você procura são o ponto de
+              partida para pensar sua prancha com o Shaper.
             </p>
-            <TextLink to="/encomendas" light>
-              Entenda as encomendas
-            </TextLink>
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+              <a
+                href="https://wa.me/5513991672772?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20o%20Beto."
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 bg-[#25D366] px-6 py-3 text-xs font-semibold tracking-[0.16em] text-[#073b1e] uppercase transition-transform hover:-translate-y-0.5 hover:bg-[#20bd5a]"
+              >
+                <WhatsAppIcon className="h-4 w-4" /> Converse com o Beto
+              </a>
+              <Link
+                to="/encomendas"
+                className="inline-flex items-center gap-2 border-b-2 border-primary pb-1 text-xs font-semibold tracking-[0.18em] text-sand uppercase transition-colors hover:text-primary"
+              >
+                Como encomendar <ArrowUpRight className="h-4 w-4" aria-hidden />
+              </Link>
+            </div>
           </Reveal>
           <Reveal delay={100} className="relative">
             <img

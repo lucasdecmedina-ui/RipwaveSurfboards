@@ -3,7 +3,10 @@ import { ChevronDown, MapPin, MessageCircle, PackageCheck, Sparkles, Wrench } fr
 import { Reveal } from "./Reveal";
 import { TribalLine } from "./WaveDivider";
 
-const WHATSAPP = "https://wa.me/5513991672772?text=Olá%2C%20gostaria%20de%20falar%20com%20o%20Beto";
+const BETO_WHATSAPP =
+  "https://wa.me/5513991672772?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20o%20Beto";
+const WHATSAPP =
+  "https://wa.me/5513991672772?text=Ol%C3%A1%2C%20estava%20no%20site%20e%20gostaria%20de%20ter%20mais%20informa%C3%A7%C3%B5es.";
 const MAPS = "https://maps.app.goo.gl/cSth9MhdkcUW19WM7";
 
 const steps = [
@@ -73,7 +76,7 @@ export function Shaper() {
               <span className="eyebrow">Encomendas</span>
             </div>
             <h2 className="mt-5 text-4xl leading-[1] text-sand md:text-5xl">
-              Sua prancha começa aqui.
+              A sua próxima prancha começa com uma conversa.
             </h2>
             <p className="mt-6 max-w-lg text-base leading-relaxed text-sand/70 md:text-lg">
               Quando você encomenda uma prancha na Ripwave, a conversa vem antes do shape. A gente
@@ -85,7 +88,7 @@ export function Shaper() {
               produção e valores são combinados com clareza na conversa, de acordo com o projeto.
             </p>
             <a
-              href={WHATSAPP}
+              href={BETO_WHATSAPP}
               target="_blank"
               rel="noreferrer"
               className="mt-8 inline-flex bg-primary px-7 py-3 text-xs font-semibold tracking-[0.18em] text-primary-foreground uppercase transition-transform duration-300 hover:-translate-y-1"

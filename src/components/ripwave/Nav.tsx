@@ -114,7 +114,7 @@ export function Nav() {
 
         <div className="flex items-center gap-3">
           <a
-            href="https://wa.me/5513991672772"
+            href="https://wa.me/5513991672772?text=Ol%C3%A1%2C%20estava%20no%20site%20e%20gostaria%20de%20ter%20mais%20informa%C3%A7%C3%B5es."
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 bg-[#25D366] px-5 py-2.5 text-[0.65rem] font-semibold tracking-[0.2em] text-[#073b1e] uppercase transition-transform duration-300 hover:-translate-y-0.5 hover:bg-[#20bd5a]"

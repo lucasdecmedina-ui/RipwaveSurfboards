@@ -6,7 +6,7 @@ const slides = [
   {
     src: "/media/client/hero-1.jpg",
     alt: "Surfista manobrando em uma onda",
-    text: "Ripwave. Evoluindo a cada onda.",
+    text: "Pranchas sob medida, moldadas em Santos.",
   },
   {
     src: "/media/client/hero-2.jpg",
@@ -16,12 +16,12 @@ const slides = [
   {
     src: "/media/client/hero-3.jpg",
     alt: "Surfista pegando uma onda",
-    text: "Mais de 37 mil pranchas, uma a uma, pelas mãos do Beto.",
+    text: "Mais de 37 mil pranchas produzidas que já passaram pela mão do Beto, uma a uma.",
   },
   {
     src: "/media/client/hero-4.jpg",
     alt: "Pranchas Ripwave finalizadas na fábrica",
-    text: "Na sua primeira ou enésima prancha, a escuta é a mesma.",
+    text: "Na sua primeira ou na enésima prancha, o respeito e a escuta são os mesmos.",
   },
 ];
 
@@ -71,9 +71,11 @@ export function Hero() {
           className="mx-auto mb-8 h-28 w-auto animate-fade-in object-contain drop-shadow-lg md:h-36"
         />
         <h1 className="sr-only">Ripwave Surfboards</h1>
-        <p className="script mt-5 text-2xl text-sand/90 md:text-4xl">{slides[activeSlide].text}</p>
-        <p className="mx-auto mt-5 max-w-lg text-sm leading-relaxed text-sand/80 md:text-base">
-          Pranchas sob medida, moldadas em Santos.
+        <p className="script mt-5 text-2xl text-sand/90 md:text-4xl">
+          Ripwave. Evoluindo a cada onda.
+        </p>
+        <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-sand/80 md:text-base">
+          {slides[activeSlide].text}
         </p>
 
         <div className="mt-8 flex items-center justify-center gap-4 text-sand/80">

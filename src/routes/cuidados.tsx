@@ -4,7 +4,8 @@ import { Reveal } from "@/components/ripwave/Reveal";
 import { WaveDivider, TribalLine } from "@/components/ripwave/WaveDivider";
 import { SiteFooter } from "@/components/ripwave/SiteFooter";
 
-const WHATSAPP = "https://wa.me/5513991672772";
+const WHATSAPP =
+  "https://wa.me/5513991672772?text=Ol%C3%A1%2C%20estava%20no%20site%20e%20gostaria%20de%20ter%20mais%20informa%C3%A7%C3%B5es.";
 const MAPS = "https://maps.app.goo.gl/cSth9MhdkcUW19WM7";
 
 const title = "Conservação da sua prancha Ripwave — Guia do Surfista";

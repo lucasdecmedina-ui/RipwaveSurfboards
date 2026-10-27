@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageFrame } from "@/components/ripwave/PageFrame";
+import { Nav } from "@/components/ripwave/Nav";
 import { Shaper } from "@/components/ripwave/Shaper";
+import { SiteFooter } from "@/components/ripwave/SiteFooter";
 
 export const Route = createFileRoute("/encomendas")({
   head: () => ({
@@ -17,12 +18,12 @@ export const Route = createFileRoute("/encomendas")({
 
 function OrdersPage() {
   return (
-    <PageFrame
-      eyebrow="Encomendas"
-      title="A sua próxima prancha começa aqui."
-      intro="Cada prancha Ripwave nasce de uma conversa sobre o seu surf, as ondas que você frequenta e o que procura sentir dentro d'água."
-    >
-      <Shaper />
-    </PageFrame>
+    <div className="min-h-screen overflow-x-hidden bg-background">
+      <Nav />
+      <main className="pt-16 md:pt-20">
+        <Shaper />
+      </main>
+      <SiteFooter />
+    </div>
   );
 }

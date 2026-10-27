@@ -1,35 +1,158 @@
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
 import { Reveal } from "./Reveal";
-import { TribalLine } from "./WaveDivider";
 
-const milestones = [
-  {
-    year: "12 anos",
-    text: "Ganhou sua primeira prancha, de isopor, e teve a ideia de colocar uma quilha de madeira improvisada.",
-  },
-  {
-    year: "1975",
-    text: "Aos 16 anos, tornou-se fabricante de longarinas para shapers da região na marcenaria do pai e, pouco tempo depois, também fabricou quilhas de fibra.",
-  },
-  {
-    year: "1978",
-    text: "Vieram a laminação, os primeiros shapes completos e as pranchas para os amigos.",
-  },
-];
+type HistorySlide = {
+  image: string;
+  title: string;
+  alt: string;
+};
 
-const chapters = [
+const firstHistory: HistorySlide[] = [
   {
-    title: "O nome que ficou",
-    text: "Ripwave nasceu em 1984 pela junção de “rip”, que no vocabulário dos surfistas é estar em excelentes condições para surfar — ou rasgar o mar — com “wave”, a onda.",
     image: "/media/client/historia-primavera.jpg",
-    alt: "Marcenaria Primavera, parte da história da Ripwave",
+    title: "Marcenaria Primavera",
+    alt: "Marcenaria Primavera",
   },
   {
-    title: "Do circuito ao mundo",
-    text: "Em 1985, a Ripwave formou sua primeira equipe de competição e levou o nome da marca pelo Circuito Brasileiro. Entre 1989 e 1997, a equipe chegou a Costa Rica, Havaí e Indonésia ao lado de nomes importantes do surf nacional.",
-    image: "/media/client/historia-time.jpg",
-    alt: "Equipe Ripwave no circuito de surf",
+    image: "/media/client/historia-sala-shape.jpg",
+    title: "Primeira sala de shape nos fundos",
+    alt: "Primeira sala de shape da Ripwave",
+  },
+  {
+    image: "/media/client/historia-bracos.jpg",
+    title: "Shapeando até cansar os braços",
+    alt: "Beto shapeando uma prancha",
+  },
+  {
+    image: "/media/client/historia-maos.jpg",
+    title: "Shapes manuais",
+    alt: "Trabalho manual no shape de uma prancha",
+  },
+  {
+    image: "/media/client/historia-laminacao.jpg",
+    title: "Laminando as primeiras",
+    alt: "Laminação de uma prancha Ripwave",
+  },
+  {
+    image: "/media/client/historia-material.jpg",
+    title: "Buscando material",
+    alt: "Busca de material para as pranchas",
   },
 ];
+
+const secondHistory: HistorySlide[] = [
+  {
+    image: "/media/client/historia-maquina-1.jpg",
+    title: "As primeiras máquinas de shape",
+    alt: "Primeira máquina de shape da Ripwave",
+  },
+  {
+    image: "/media/client/historia-maquina-2.jpg",
+    title: "A oficina ganhando forma",
+    alt: "Máquina de shape na oficina Ripwave",
+  },
+  {
+    image: "/media/client/historia-time.jpg",
+    title: "Equipe nos campeonatos",
+    alt: "Equipe Ripwave em campeonato",
+  },
+  {
+    image: "/media/client/historia-peru.jpg",
+    title: "Beto no Peru",
+    alt: "Beto em viagem ao Peru",
+  },
+  {
+    image: "/media/client/historia-parcerias.jpg",
+    title: "Parcerias que atravessam o tempo",
+    alt: "Parcerias da Ripwave",
+  },
+];
+
+function HistoryCarousel({ label, slides }: { label: string; slides: HistorySlide[] }) {
+  const [active, setActive] = useState(0);
+  const current = slides[active];
+  const previous = () => setActive((index) => (index - 1 + slides.length) % slides.length);
+  const next = () => setActive((index) => (index + 1) % slides.length);
+
+  return (
+    <section
+      className="outline-none"
+      role="region"
+      aria-roledescription="carrossel"
+      aria-label={label}
+      tabIndex={0}
+      onKeyDown={(event) => {
+        if (event.key === "ArrowLeft") previous();
+        if (event.key === "ArrowRight") next();
+      }}
+    >
+      <div className="grid overflow-hidden bg-muted md:grid-cols-[1.45fr_0.55fr]">
+        <div className="relative min-h-[19rem] md:min-h-[31rem]">
+          {slides.map((slide, index) => (
+            <img
+              key={slide.image}
+              src={slide.image}
+              alt={index === active ? slide.alt : ""}
+              aria-hidden={index !== active}
+              loading={index === 0 ? "eager" : "lazy"}
+              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
+                index === active ? "opacity-100" : "pointer-events-none opacity-0"
+              }`}
+            />
+          ))}
+        </div>
+        <div className="flex flex-col justify-between p-7 md:p-10">
+          <div>
+            <p className="eyebrow text-primary">Memórias Ripwave</p>
+            <p className="mt-5 font-display text-3xl leading-none text-foreground md:text-4xl">
+              {current.title}
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              Registro {String(active + 1).padStart(2, "0")} de{" "}
+              {String(slides.length).padStart(2, "0")}
+            </p>
+          </div>
+          <div className="mt-10 flex items-center justify-between gap-4">
+            <div className="flex gap-2" role="tablist" aria-label={`Registros de ${label}`}>
+              {slides.map((slide, index) => (
+                <button
+                  key={slide.image}
+                  type="button"
+                  role="tab"
+                  aria-selected={index === active}
+                  aria-label={`Mostrar ${slide.title}`}
+                  onClick={() => setActive(index)}
+                  className={`h-2.5 w-2.5 rounded-full transition-colors ${
+                    index === active ? "bg-primary" : "bg-border hover:bg-foreground/40"
+                  }`}
+                />
+              ))}
+            </div>
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={previous}
+                aria-label="Registro anterior"
+                className="grid h-10 w-10 place-items-center border border-border text-foreground transition-colors hover:border-primary hover:text-primary"
+              >
+                <ChevronLeft size={18} aria-hidden="true" />
+              </button>
+              <button
+                type="button"
+                onClick={next}
+                aria-label="Próximo registro"
+                className="grid h-10 w-10 place-items-center border border-border text-foreground transition-colors hover:border-primary hover:text-primary"
+              >
+                <ChevronRight size={18} aria-hidden="true" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export function About() {
   return (
@@ -49,14 +172,7 @@ export function About() {
           </Reveal>
           <div>
             <Reveal>
-              <div className="flex items-center gap-3 text-accent">
-                <TribalLine className="w-24" />
-                <span className="eyebrow">A Ripwave</span>
-              </div>
-              <h2 className="mt-5 text-4xl leading-[1] md:text-5xl">Uma história feita à mão.</h2>
-            </Reveal>
-            <Reveal delay={100}>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+              <p className="max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
                 A Ripwave é uma fábrica de pranchas sob medida, em Santos, tocada pelo shaper Beto
                 Loureiro. Do iniciante que está tendo o primeiro contato com o mar até quem já é da
                 família Ripwave há anos: nenhuma prancha sai daqui pronta de prateleira, ela é
@@ -67,7 +183,7 @@ export function About() {
                 se orgulha de ter visto nascer o surf no Brasil.
               </p>
             </Reveal>
-            <Reveal delay={180}>
+            <Reveal delay={100}>
               <dl className="mt-10 grid grid-cols-3 gap-4 border-t border-border pt-8">
                 <div>
                   <dt className="font-display text-2xl text-foreground md:text-3xl">37 mil+</dt>
@@ -86,69 +202,37 @@ export function About() {
           </div>
         </div>
 
-        <div className="mt-24 grid gap-12 border-t border-border pt-16 lg:grid-cols-[0.85fr_1.15fr]">
-          <Reveal>
-            <video
-              className="h-[32rem] w-full object-cover"
-              poster="/media/client/sobre-beto.jpg"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              aria-label="Beto Loureiro shapeando uma prancha"
-            >
-              <source src="/media/client/sobre-beto.mp4" type="video/mp4" />
-            </video>
-          </Reveal>
-          <div>
-            <Reveal>
-              <p className="eyebrow text-primary">O olhar de quem faz</p>
-              <h3 className="mt-4 text-3xl leading-none md:text-4xl">Da marcenaria para o mar.</h3>
-            </Reveal>
-            <Reveal delay={100}>
-              <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">
-                Beto cresceu na mesma rua onde a fábrica funciona até hoje. Entre fins de semana nas
-                praias do Guarujá, as aulas de educação física no Posto 2 e as ferramentas da
-                marcenaria da família, começou ainda criança o interesse pelo surf.
-              </p>
-            </Reveal>
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              {milestones.map((item, index) => (
-                <Reveal key={item.year} delay={index * 80}>
-                  <article className="h-full border-l-2 border-primary bg-muted/60 p-5">
-                    <p className="font-display text-2xl text-primary">{item.year}</p>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                      {item.text}
-                    </p>
-                  </article>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </div>
+        <Reveal className="mt-24 border-t border-border pt-16">
+          <HistoryCarousel label="Os primeiros anos da Ripwave" slides={firstHistory} />
+        </Reveal>
 
-        <div className="mt-24 grid gap-8 border-t border-border pt-16 md:grid-cols-2">
-          {chapters.map((chapter, index) => (
-            <Reveal key={chapter.title} delay={index * 100}>
-              <article className="overflow-hidden bg-muted">
-                <img
-                  src={chapter.image}
-                  alt={chapter.alt}
-                  loading="lazy"
-                  className="h-72 w-full object-cover"
-                />
-                <div className="p-7">
-                  <p className="eyebrow text-primary">História</p>
-                  <h3 className="mt-3 text-2xl">{chapter.title}</h3>
-                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                    {chapter.text}
-                  </p>
-                </div>
-              </article>
-            </Reveal>
-          ))}
-        </div>
+        <Reveal className="my-24 grid gap-10 border-y border-border py-14 lg:grid-cols-[1.1fr_0.9fr]">
+          <p className="max-w-2xl text-xl leading-relaxed text-foreground md:text-2xl">
+            O nome Ripwave nasceu em 1984 pela junção de “rip”, que no vocabulário dos surfistas é
+            estar em excelentes condições pra surfar, ou “rasgar” o mar, com a palavra “wave”, a
+            onda.
+          </p>
+          <div className="grid gap-6 sm:grid-cols-2">
+            <article className="border-l-2 border-primary pl-5">
+              <p className="eyebrow text-primary">1985</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Formou a primeira equipe de competição da Ripwave, com técnico à frente, e levou o
+                nome da marca pelo Circuito Brasileiro com atletas de peso do surf nacional.
+              </p>
+            </article>
+            <article className="border-l-2 border-primary pl-5">
+              <p className="eyebrow text-primary">1989–97 · Do circuito ao mundo</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                A equipe Ripwave levou a marca a Costa Rica, Havaí e Indonésia, ao lado de nomes
+                importantes do surf nacional, na realização de um sonho antigo ao lado de amigos.
+              </p>
+            </article>
+          </div>
+        </Reveal>
+
+        <Reveal>
+          <HistoryCarousel label="A Ripwave no circuito e no mundo" slides={secondHistory} />
+        </Reveal>
       </div>
     </section>
   );

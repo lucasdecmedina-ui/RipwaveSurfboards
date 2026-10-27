@@ -40,7 +40,7 @@ export function SiteFooter() {
             Instagram
           </a>
           <a
-            href="https://wa.me/5513991672772"
+            href="https://wa.me/5513991672772?text=Ol%C3%A1%2C%20estava%20no%20site%20e%20gostaria%20de%20ter%20mais%20informa%C3%A7%C3%B5es."
             target="_blank"
             rel="noreferrer"
             className="transition-colors hover:text-primary"
