@@ -2,7 +2,12 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import type { CSSProperties } from "react";
 import { CatalogFrame } from "@/components/ripwave/CatalogFrame";
-import { boardEditorial, getBoardCategory, getBoardModels } from "@/data/catalog";
+import {
+  boardEditorial,
+  getBoardCardImage,
+  getBoardCategory,
+  getBoardModels,
+} from "@/data/catalog";
 
 export const Route = createFileRoute("/pranchas/$categoria/")({
   component: CategoryPage,
@@ -49,34 +54,56 @@ function CategoryPage() {
             </div>
           ) : (
             <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
-              {models.map((model, index) => (
-                <Link
-                  key={model.slug}
-                  to="/pranchas/$categoria/$modelo"
-                  params={{ categoria: category.slug, modelo: model.slug }}
-                  className="card-lift group overflow-hidden bg-muted ring-1 ring-navy/10"
-                >
-                  <div
-                    className="model-graphic relative h-72 overflow-hidden"
-                    style={{ "--model-index": index } as CSSProperties}
-                    aria-hidden
+              {models.map((model, index) => {
+                const cardImage = getBoardCardImage(model);
+
+                return (
+                  <Link
+                    key={model.slug}
+                    to="/pranchas/$categoria/$modelo"
+                    params={{ categoria: category.slug, modelo: model.slug }}
+                    className="card-lift group overflow-hidden bg-muted ring-1 ring-navy/10"
                   >
-                    <span className="absolute top-6 left-6 font-display text-6xl text-sand/20">
-                      0{index + 1}
-                    </span>
-                    <span className="absolute right-8 bottom-8 h-40 w-12 rotate-[28deg] rounded-full border-2 border-primary/80 bg-sand/10 shadow-[0_0_0_16px_color-mix(in_oklab,var(--navy)_30%,transparent)]" />
-                  </div>
-                  <div className="p-6">
-                    <h2 className="text-2xl text-foreground">{model.name}</h2>
-                    <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-foreground/70">
-                      {boardEditorial[model.slug]?.card ?? model.description}
-                    </p>
-                    <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.18em] text-primary uppercase">
-                      Ver modelo <ArrowUpRight className="h-4 w-4" aria-hidden />
-                    </span>
-                  </div>
-                </Link>
-              ))}
+                    {cardImage ? (
+                      <div className="relative h-72 overflow-hidden bg-navy">
+                        <img
+                          src={cardImage.src}
+                          alt={cardImage.alt}
+                          loading="lazy"
+                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div
+                          className="absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-navy/10"
+                          aria-hidden
+                        />
+                        <span className="absolute top-6 left-6 font-display text-6xl text-sand/55">
+                          0{index + 1}
+                        </span>
+                      </div>
+                    ) : (
+                      <div
+                        className="model-graphic relative h-72 overflow-hidden"
+                        style={{ "--model-index": index } as CSSProperties}
+                        aria-hidden
+                      >
+                        <span className="absolute top-6 left-6 font-display text-6xl text-sand/20">
+                          0{index + 1}
+                        </span>
+                        <span className="absolute right-8 bottom-8 h-40 w-12 rotate-[28deg] rounded-full border-2 border-primary/80 bg-sand/10 shadow-[0_0_0_16px_color-mix(in_oklab,var(--navy)_30%,transparent)]" />
+                      </div>
+                    )}
+                    <div className="p-6">
+                      <h2 className="text-2xl text-foreground">{model.name}</h2>
+                      <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-foreground/70">
+                        {boardEditorial[model.slug]?.card ?? model.description}
+                      </p>
+                      <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.18em] text-primary uppercase">
+                        Ver modelo <ArrowUpRight className="h-4 w-4" aria-hidden />
+                      </span>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           )}
         </div>
