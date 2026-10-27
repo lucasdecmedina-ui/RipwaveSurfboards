@@ -41,6 +41,33 @@ const officialImages = (slug: string, name: string): BoardImage[] => [
   { src: `/media/models/${slug}-2.png`, alt: `${name}, vista traseira`, label: "Costas" },
 ];
 
+// Fotos de produto selecionadas somente das pastas identificadas de cada modelo.
+// Elas são usadas como capa dos cards; as vistas técnicas continuam em `images`.
+const cardImageSources: Record<string, string> = {
+  "big-fish": "/media/models/big-fish-card.jpg",
+  dw: "/media/models/dw-card.jpg",
+  evolution: "/media/models/evolution-card.jpg",
+  "fish-master": "/media/models/fish-master-card.jpg",
+  "fish-retro": "/media/models/fish-retro-card.jpg",
+  "long-hibrido": "/media/models/long-hibrido-card.jpg",
+  "mini-tunk": "/media/models/mini-tunk-card.jpg",
+  "key-ring": "/media/models/key-ring-card.jpg",
+  portable: "/media/models/portable-card.jpg",
+  "rip-fun-1": "/media/models/rip-fun-1-card.jpg",
+  "rip-fun-2": "/media/models/rip-fun-2-card.jpg",
+  "single-fin": "/media/models/single-fin-card.jpg",
+  "stand-up-familia": "/media/models/stand-up-familia-card.jpg",
+  "super-shark": "/media/models/super-shark-card.jpg",
+  "the-rip-2": "/media/models/the-rip-2-card.jpg",
+  "the-strong": "/media/models/the-strong-card.jpg",
+  "wave-toys": "/media/models/wave-toys-card.jpg",
+};
+
+export const getBoardCardImage = (model: BoardModel): BoardImage | undefined => {
+  const src = cardImageSources[model.slug];
+  return src ? { src, alt: `${model.name}, prancha finalizada` } : model.images?.[0];
+};
+
 export const boardCategories: BoardCategory[] = [
   { slug: "shortboards", name: "Shortboards" },
   { slug: "fish-retro", name: "Fish & Retro Series" },

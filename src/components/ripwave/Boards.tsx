@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import type { CSSProperties } from "react";
-import { boardModels, type BoardModel } from "@/data/catalog";
+import { boardModels, getBoardCardImage, type BoardModel } from "@/data/catalog";
 import { Reveal } from "./Reveal";
 import { WaveDivider, TribalLine } from "./WaveDivider";
 
@@ -25,45 +25,54 @@ export function Boards() {
         </Reveal>
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-          {featuredBoards.map((board, index) => (
-            <Reveal key={board.slug} delay={index * 90}>
-              <Link
-                to="/pranchas/$categoria/$modelo"
-                params={{ categoria: board.categorySlug, modelo: board.slug }}
-                className="card-lift group flex h-full flex-col overflow-hidden bg-sand/5 ring-1 ring-sand/10 backdrop-blur-sm"
-              >
-                {board.images?.[0] ? (
-                  <div className="h-56 bg-[#edf1f2] p-3">
-                    <img
-                      src={board.images[0].src}
-                      alt={board.images[0].alt}
-                      className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
-                ) : (
-                  <div
-                    className="model-graphic relative h-56 overflow-hidden"
-                    style={{ "--model-index": index } as CSSProperties}
-                    aria-hidden
-                  >
-                    <span className="absolute top-5 left-5 font-display text-5xl text-sand/20">
-                      0{index + 1}
+          {featuredBoards.map((board, index) => {
+            const cardImage = getBoardCardImage(board);
+
+            return (
+              <Reveal key={board.slug} delay={index * 90}>
+                <Link
+                  to="/pranchas/$categoria/$modelo"
+                  params={{ categoria: board.categorySlug, modelo: board.slug }}
+                  className="card-lift group flex h-full flex-col overflow-hidden bg-sand/5 ring-1 ring-sand/10 backdrop-blur-sm"
+                >
+                  {cardImage ? (
+                    <div className="relative h-56 overflow-hidden bg-navy">
+                      <img
+                        src={cardImage.src}
+                        alt={cardImage.alt}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div
+                        className="absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-navy/10"
+                        aria-hidden
+                      />
+                    </div>
+                  ) : (
+                    <div
+                      className="model-graphic relative h-56 overflow-hidden"
+                      style={{ "--model-index": index } as CSSProperties}
+                      aria-hidden
+                    >
+                      <span className="absolute top-5 left-5 font-display text-5xl text-sand/20">
+                        0{index + 1}
+                      </span>
+                      <span className="absolute right-7 bottom-6 h-32 w-10 rotate-[28deg] rounded-full border-2 border-primary/80 bg-sand/10" />
+                    </div>
+                  )}
+                  <div className="flex flex-1 flex-col p-5">
+                    <h3 className="text-xl leading-[0.95] text-sand">{board.name}</h3>
+                    <p className="mt-3 line-clamp-4 flex-1 text-sm leading-relaxed text-sand/70">
+                      {board.description}
+                    </p>
+                    <span className="mt-6 inline-flex w-fit border-b-2 border-primary pb-1 text-xs font-semibold tracking-[0.16em] text-sand uppercase transition-colors group-hover:text-primary">
+                      Ver modelo
                     </span>
-                    <span className="absolute right-7 bottom-6 h-32 w-10 rotate-[28deg] rounded-full border-2 border-primary/80 bg-sand/10" />
                   </div>
-                )}
-                <div className="flex flex-1 flex-col p-5">
-                  <h3 className="text-xl leading-[0.95] text-sand">{board.name}</h3>
-                  <p className="mt-3 line-clamp-4 flex-1 text-sm leading-relaxed text-sand/70">
-                    {board.description}
-                  </p>
-                  <span className="mt-6 inline-flex w-fit border-b-2 border-primary pb-1 text-xs font-semibold tracking-[0.16em] text-sand uppercase transition-colors group-hover:text-primary">
-                    Ver modelo
-                  </span>
-                </div>
-              </Link>
-            </Reveal>
-          ))}
+                </Link>
+              </Reveal>
+            );
+          })}
         </div>
 
         <Reveal delay={450}>
