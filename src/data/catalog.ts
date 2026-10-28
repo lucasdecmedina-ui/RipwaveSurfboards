@@ -65,7 +65,7 @@ const cardImageSources: Record<string, string> = {
 
 export const getBoardCardImage = (model: BoardModel): BoardImage | undefined => {
   const src = cardImageSources[model.slug];
-  return src ? { src, alt: `${model.name}, prancha finalizada` } : model.images?.[0];
+  return src ? { src, alt: `${model.name}, prancha finalizada` } : undefined;
 };
 
 export const boardCategories: BoardCategory[] = [

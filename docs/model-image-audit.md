@@ -6,7 +6,7 @@ Atualizado a partir de `modelos (1).rar` em 27/10/2026.
 
 - Só são aceitas vistas `1`, `2` e `3` presentes em uma pasta com nome correspondente ao modelo.
 - A ordem do visualizador é frente, lado direito e costas.
-- Uma foto extra por modelo, localizada dentro da pasta nominal correspondente, pode ser publicada somente como capa do card.
+- Uma foto editorial por modelo, localizada dentro da pasta nominal correspondente, pode ser publicada somente como capa do card.
 - Arquivos com UUID excedentes, artes promocionais e nomes ambíguos não são publicados.
 - Fotos já usadas no catálogo não são substituídas automaticamente.
 
@@ -42,3 +42,4 @@ Atualizado a partir de `modelos (1).rar` em 27/10/2026.
 - Os quatro modelos sem fotos continuam com o grafismo abstrato do catálogo até a chegada de um conjunto identificado.
 - Alguns modelos completos têm uma quarta vista lateral já validada no catálogo. Ela é preservada e não faz parte da importação do pacote.
 - Para os 17 modelos identificados no arquivo, foi escolhida uma foto extra da própria pasta como capa do card. As demais imagens extras seguem excluídas do site.
+- Fotos técnicas de frente, lateral e costas não são usadas como capa de card.
