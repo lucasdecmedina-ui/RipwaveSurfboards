@@ -43,3 +43,5 @@ Atualizado a partir de `modelos (1).rar` em 27/10/2026.
 - Alguns modelos completos têm uma quarta vista lateral já validada no catálogo. Ela é preservada e não faz parte da importação do pacote.
 - Para os 17 modelos identificados no arquivo, foi escolhida uma foto extra da própria pasta como capa do card. As demais imagens extras seguem excluídas do site.
 - Fotos técnicas de frente, lateral e costas não são usadas como capa de card.
+- As capas dos cards usam uma foto editorial completa da prancha, com encaixe por contenção para não haver recorte inconsistente.
+- Key Ring e Portable ainda não têm foto editorial isolada; usam a composição editorial identificada em suas respectivas pastas até a chegada de uma foto frontal individual.

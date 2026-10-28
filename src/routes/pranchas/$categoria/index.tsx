@@ -65,15 +65,15 @@ function CategoryPage() {
                     className="card-lift group overflow-hidden bg-muted ring-1 ring-navy/10"
                   >
                     {cardImage ? (
-                      <div className="relative h-72 overflow-hidden bg-navy">
+                      <div className="relative h-72 overflow-hidden bg-[#e9eef1]">
                         <img
                           src={cardImage.src}
                           alt={cardImage.alt}
                           loading="lazy"
-                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
                         />
                         <div
-                          className="absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-navy/10"
+                          className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy/35 to-transparent"
                           aria-hidden
                         />
                         <span className="absolute top-6 left-6 font-display text-6xl text-sand/55">

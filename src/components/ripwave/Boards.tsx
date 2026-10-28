@@ -36,15 +36,15 @@ export function Boards() {
                   className="card-lift group flex h-full flex-col overflow-hidden bg-sand/5 ring-1 ring-sand/10 backdrop-blur-sm"
                 >
                   {cardImage ? (
-                    <div className="relative h-56 overflow-hidden bg-navy">
+                    <div className="relative h-56 overflow-hidden bg-[#e9eef1]">
                       <img
                         src={cardImage.src}
                         alt={cardImage.alt}
                         loading="lazy"
-                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
                       />
                       <div
-                        className="absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-navy/10"
+                        className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy/35 to-transparent"
                         aria-hidden
                       />
                     </div>
