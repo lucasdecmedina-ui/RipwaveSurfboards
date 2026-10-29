@@ -4,9 +4,9 @@ import { Hero } from "@/components/ripwave/Hero";
 import { HomeTopics } from "@/components/ripwave/HomeTopics";
 import { SiteFooter } from "@/components/ripwave/SiteFooter";
 
-const title = "Ripwave Surfboards — Pranchas artesanais desde 1978";
+const title = "Ripwave Surfboards — Pranchas artesanais desde 1976";
 const description =
-  "Mais de 34 mil shapes e 40 anos de história. Pranchas de surf artesanais de Beto Loureiro, uma das marcas mais tradicionais do Brasil.";
+  "Mais de 37 mil pranchas e 50 anos de história. Pranchas de surf artesanais de Beto Loureiro, uma das marcas mais tradicionais do Brasil.";
 
 export const Route = createFileRoute("/")({
   head: () => ({

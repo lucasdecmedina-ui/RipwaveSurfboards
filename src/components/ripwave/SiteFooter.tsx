@@ -67,7 +67,7 @@ export function SiteFooter() {
         </nav>
 
         <p className="eyebrow mt-10 text-sand/40">
-          © {new Date().getFullYear()} Ripwave Surfboards — Desde 1978
+          © {new Date().getFullYear()} Ripwave Surfboards — Desde 1976
         </p>
       </div>
     </footer>

@@ -178,7 +178,7 @@ export function HomeTopics() {
             </p>
             <dl className="mt-8 flex gap-7 border-l-2 border-primary pl-5">
               <div>
-                <dt className="font-display text-3xl">1978</dt>
+                <dt className="font-display text-3xl">1976</dt>
                 <dd className="eyebrow mt-1 text-muted-foreground">Desde</dd>
               </div>
               <div>

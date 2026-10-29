@@ -36,7 +36,7 @@ export function BoardVideo() {
               <span className="eyebrow">Detalhe</span>
             </div>
             <h2 className="mt-5 text-4xl leading-[1] md:text-5xl">
-              O acabamento que só o olhar de quem shapeia desde 1978 entrega
+              O acabamento que só o olhar de quem shapeia desde 1976 entrega
             </h2>
             <p className="script mt-4 text-2xl text-primary">Linha, rocker e rabeta.</p>
             <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground md:text-lg">

@@ -194,13 +194,45 @@ export function About() {
                   <dd className="eyebrow mt-1 text-muted-foreground">Shaper e fundador</dd>
                 </div>
                 <div>
-                  <dt className="font-display text-2xl text-foreground md:text-3xl">48 anos</dt>
+                  <dt className="font-display text-2xl text-foreground md:text-3xl">50 anos</dt>
                   <dd className="eyebrow mt-1 text-muted-foreground">De história</dd>
                 </div>
               </dl>
             </Reveal>
           </div>
         </div>
+
+        <Reveal className="mt-20 grid gap-8 border-t border-border pt-14 lg:grid-cols-[0.75fr_1.25fr]">
+          <div>
+            <p className="eyebrow text-primary">O começo</p>
+            <h2 className="mt-4 max-w-sm text-3xl leading-[0.95] text-foreground md:text-4xl">
+              Antes da Ripwave, já havia uma vida inteira de mar e marcenaria.
+            </h2>
+          </div>
+          <div className="max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
+            <p>
+              Beto cresceu na mesma rua onde a fábrica funciona até hoje. Entre finais de semana nas
+              praias do Guarujá e as aulas de educação física do colégio realizadas no Posto 2,
+              começou ainda criança o interesse pelo surf. Antes das pranchas, havia a marcenaria da
+              família, as ferramentas e suas experiências.
+            </p>
+            <div className="mt-8 grid gap-5 border-l-2 border-primary pl-5">
+              <p>
+                <strong className="text-foreground">Aos 12 anos,</strong> ganhou sua primeira
+                prancha, de isopor, e teve a ideia de colocar uma quilha de madeira improvisada.
+              </p>
+              <p>
+                <strong className="text-foreground">Em 1975,</strong> com 16 anos, tornou-se
+                fabricante de longarinas para shapers da região na marcenaria do pai e, pouco tempo
+                depois, fabricou também quilhas de fibra.
+              </p>
+              <p>
+                Depois, em <strong className="text-foreground">1976,</strong> vieram a laminação e
+                iniciou os primeiros shapes completos e as pranchas para os amigos.
+              </p>
+            </div>
+          </div>
+        </Reveal>
 
         <Reveal className="mt-24 border-t border-border pt-16">
           <HistoryCarousel label="Os primeiros anos da Ripwave" slides={firstHistory} />

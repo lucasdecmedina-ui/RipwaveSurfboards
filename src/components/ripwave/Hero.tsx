@@ -80,7 +80,7 @@ export function Hero() {
 
         <div className="mt-8 flex items-center justify-center gap-4 text-sand/80">
           <TribalLine className="hidden sm:block" />
-          <span className="eyebrow whitespace-nowrap">Desde 1978</span>
+          <span className="eyebrow whitespace-nowrap">Desde 1976</span>
           <TribalLine className="hidden scale-x-[-1] sm:block" />
         </div>
 
