@@ -202,14 +202,8 @@ export function About() {
           </div>
         </div>
 
-        <Reveal className="mt-20 grid gap-8 border-t border-border pt-14 lg:grid-cols-[0.75fr_1.25fr]">
-          <div>
-            <p className="eyebrow text-primary">O começo</p>
-            <h2 className="mt-4 max-w-sm text-3xl leading-[0.95] text-foreground md:text-4xl">
-              Antes da Ripwave, já havia uma vida inteira de mar e marcenaria.
-            </h2>
-          </div>
-          <div className="max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
+        <Reveal className="mt-20 border-t border-border pt-14">
+          <div className="mx-auto max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
             <p>
               Beto cresceu na mesma rua onde a fábrica funciona até hoje. Entre finais de semana nas
               praias do Guarujá e as aulas de educação física do colégio realizadas no Posto 2,
